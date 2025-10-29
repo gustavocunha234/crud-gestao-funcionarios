@@ -7,7 +7,7 @@ Aplicação Node.js + Express para cadastrar, editar e remover funcionários, co
 ## 🚀 Preview
 
 <p align="center">
-  <img src="[public/demo-crud.png](https://raw.githubusercontent.com/gustavocunha234/crud-gestao-funcionarios/main/public/demo-crud.png)" width="700" alt="Tela do sistema CRUD">
+  <img src="https://raw.githubusercontent.com/gustavocunha234/crud-gestao-funcionarios/main/public/demo-crud.png" width="700" alt="Tela do sistema CRUD">
 </p>
 
 ---
