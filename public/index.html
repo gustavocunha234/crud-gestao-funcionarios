@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>sistema de funcionarios</title>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Gestao de funcionarios</h1>
+      </header>
+      <section class="form-section">
+        <h2>Cadastrar / Atualizar Funcionarios</h2>
+        <form id="funcionarioForm">
+          <input type="hidden" id="id" />
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            placeholder="Nome"
+            required
+          />
+          <input
+            type="text"
+            name="cargo"
+            id="cargo"
+            placeholder="Cargo"
+            required
+          />
+          <input
+            type="number"
+            name="salario"
+            id="salario"
+            placeholder="Salario"
+            required
+          />
+          <button type="submit">Salvar</button>
+        </form>
+      </section>
+      <section class="list-section">
+        <h2>Lista de Funcionarios</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Cargo</th>
+              <th>Salario</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-funcionarios"></tbody>
+        </table>
+      </section>
+      <footer>
+        <p>Desenvolvido por GustavoDev</p>
+      </footer>
+    </main>
+  </body>
+</html>

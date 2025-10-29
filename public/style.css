@@ -1,0 +1,307 @@
+/* ===== Reset/Tokenização ===== */
+:root{
+  --bg: #0f172a;         /* slate-900 */
+  --card: #111827;       /* gray-900 */
+  --muted: #94a3b8;      /* slate-400 */
+  --text: #e5e7eb;       /* gray-200 */
+  --primary: #6366f1;    /* indigo-500 */
+  --primary-600: #5458ee;
+  --ring: 0 0 0 3px rgba(99,102,241,.25);
+  --radius: 14px;
+  --shadow: 0 10px 25px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 10% -10%, #1f2937 0%, transparent 60%) , var(--bg);
+  color:var(--text);
+  line-height:1.5;
+}
+
+/* ===== Layout ===== */
+.container{
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+header, footer{
+  text-align:center;
+  margin-bottom: 24px;
+}
+
+header h1{
+  font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
+  letter-spacing:.3px;
+  margin:0;
+}
+
+footer p{ color: var(--muted); }
+
+/* ===== Cards/Sections ===== */
+section{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid rgba(148,163,184,.18);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  margin: 18px 0;
+  backdrop-filter: blur(6px);
+}
+
+section h2{
+  margin: 0 0 14px 0;
+  font-size: clamp(1.1rem, 2vw + .5rem, 1.4rem);
+  font-weight: 600;
+}
+
+/* ===== Formulário ===== */
+.form-section form{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+input, button{
+  font: inherit;
+}
+
+input[type="text"],
+input[type="number"]{
+  width:100%;
+  padding:12px 14px;
+  border-radius: 10px;
+  border:1px solid rgba(148,163,184,.28);
+  background:#0b1220;
+  color:var(--text);
+  outline:none;
+  transition: border-color .2s, box-shadow .2s, transform .02s;
+}
+
+input::placeholder{ color:#64748b; }
+input:focus{
+  border-color: var(--primary);
+  box-shadow: var(--ring);
+}
+
+button[type="submit"]{
+  justify-self: start;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 0;
+  background: var(--primary);
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+  letter-spacing:.2px;
+  transition: transform .06s ease, background .2s ease;
+}
+button[type="submit"]:hover{ background: var(--primary-600); }
+button[type="submit"]:active{ transform: translateY(1px); }
+
+/* Em telas ≥ 640px, form em 2 colunas + botão alinhado */
+@media (min-width: 640px){
+  .form-section form{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  #salario{ grid-column: span 1; }
+  button[type="submit"]{ grid-column: 1 / 2; }
+}
+
+/* Em telas ≥ 900px, 3 colunas */
+@media (min-width: 900px){
+  .form-section form{
+    grid-template-columns: 2fr 2fr 1fr auto;
+    gap: 14px;
+  }
+  #nome{ grid-column: 1 / 2; }
+  #cargo{ grid-column: 2 / 3; }
+  #salario{ grid-column: 3 / 4; }
+  button[type="submit"]{ grid-column: 4 / 5; align-self: center; }
+}
+
+/* ===== Tabela ===== */
+.list-section{
+  overflow: hidden;
+}
+
+.list-section table{
+  width:100%;
+  border-collapse: collapse;
+  background:#0b1220;
+  border:1px solid rgba(148,163,184,.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.list-section thead{
+  background: linear-gradient(180deg, rgba(99,102,241,.15), rgba(99,102,241,.05));
+}
+
+th, td{
+  text-align:left;
+  padding:12px 14px;
+  border-bottom:1px solid rgba(148,163,184,.12);
+  white-space: nowrap;
+}
+
+th{ font-weight:700; color:#c7d2fe; }
+td{ color:#000; }
+
+/* Zebra stripes */
+tbody tr:nth-child(even){ background: rgba(148,163,184,.05); }
+
+/* Ações (botões dentro da tabela) */
+td .btn{
+  padding: 6px 10px;
+  border-radius: 8px;
+  border:1px solid rgba(148,163,184,.25);
+  background: #0f172a;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 6px;
+  display: inline-block;
+  transition: border-color .2s, transform .06s;
+}
+td .btn:hover{ border-color: var(--primary); }
+td .btn:active{ transform: translateY(1px); }
+
+/* ===== Responsividade da tabela ===== */
+/* Mobile: vira “cards” para caber na tela */
+@media (max-width: 640px){
+  .list-section table, 
+  .list-section thead, 
+  .list-section tbody, 
+  .list-section th, 
+  .list-section td, 
+  .list-section tr{
+    display:block;
+  }
+  .list-section thead{ 
+    position:absolute; 
+    height:0; 
+    width:1px; 
+    overflow:hidden; 
+    clip:rect(0 0 0 0);
+  }
+  .list-section tbody tr{
+    background:#fff;
+    margin:10px 0;
+    padding:10px 12px;
+    border:1px solid rgba(148,163,184,.2);
+    border-radius:12px;
+  }
+  .list-section td{
+    border:0;
+    padding:8px 0;
+    position:relative;
+    white-space:normal;
+  }
+  .list-section td::before{
+    content: attr(data-label);
+    display:block;
+    font-size:.8rem;
+    color: var(--muted);
+    margin-bottom:2px;
+    text-transform: uppercase;
+    letter-spacing:.04em;
+  }
+}
+
+/* Alternativa: rolagem horizontal em telas entre 640px e 900px */
+@media (min-width: 640px) and (max-width: 900px){
+  .list-section{
+    overflow-x:auto;
+  }
+  .list-section table{
+    min-width: 700px;
+  }
+}
+
+/* ===== Acessibilidade ===== */
+:focus-visible{
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: 10px;
+}
+
+/* ===== Suporte a tema claro (opcional) ===== */
+@media (prefers-color-scheme: light){
+  :root{
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text:#0f172a;
+    --muted:#475569;
+    --shadow: 0 10px 25px rgba(2,6,23,.06);
+  }
+  body{ background: radial-gradient(1200px 800px at 10% -10%, #e5e7eb 0%, transparent 60%), var(--bg); }
+  input[type="text"], input[type="number"]{ background:#ffffff; color:var(--text); }
+  .list-section table{ background:#ffffff; }
+  th{ color:#3730a3; }
+}
+
+/* ===== Botões da Tabela ===== */
+button {
+  font: inherit;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+/* Botão padrão (Salvar do formulário) */
+form button[type="submit"] {
+  background: var(--primary);
+  color: #fff;
+}
+
+form button[type="submit"]:hover {
+  background: var(--primary-600);
+  transform: translateY(-1px);
+}
+
+/* Botão Editar */
+td button:nth-child(1) {
+  background-color: #3b82f6; /* Azul */
+  color: #fff;
+  margin-right: 8px;
+}
+
+td button:nth-child(1):hover {
+  background-color: #2563eb; /* Azul mais escuro */
+  transform: translateY(-1px);
+}
+
+/* Botão Excluir */
+td button:nth-child(2) {
+  background-color: #ef4444; /* Vermelho */
+  color: #fff;
+}
+
+td button:nth-child(2):hover {
+  background-color: #dc2626; /* Vermelho escuro */
+  transform: translateY(-1px);
+}
+
+/* Efeito de foco acessível */
+td button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35);
+}
+
+/* Mobile — botões lado a lado */
+@media (max-width: 640px) {
+  td button {
+    display: inline-block;
+    width: 48%;
+    margin-bottom: 6px;
+  }
+}
+
